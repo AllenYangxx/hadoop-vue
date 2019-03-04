@@ -24,18 +24,18 @@ export default {
     mock.onPost('/login').reply(config => {
       let {username, password} = JSON.parse(config.data);
       return new Promise((resolve, reject) => {
-        let user = null;
+        let date = null;
         setTimeout(() => {
           let hasUser = LoginUsers.some(u => {
             if (u.username === username && u.password === password) {
-              user = JSON.parse(JSON.stringify(u));
-              user.password = undefined;
+              date = JSON.parse(JSON.stringify(u));
+              date.password = undefined;
               return true;
             }
           });
 
           if (hasUser) {
-            resolve([200, { code: 200, msg: '请求成功', user }]);
+            resolve([200, { code: 200, msg: '请求成功', date }]);
           } else {
             resolve([200, { code: 500, msg: '账号或密码错误' }]);
           }

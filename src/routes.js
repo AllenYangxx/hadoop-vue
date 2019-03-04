@@ -27,10 +27,10 @@ let routes = [
     {
         path: '/',
         component: Home,
-        name: '导航一',
+        name: '用户管理',
         iconCls: 'el-icon-message',//图标样式class
         children: [
-            { path: '/main', component: Main, name: '主页', hidden: true },
+            { path: '/main', component: Main, name: '用户信息', hidden: true },
             { path: '/table', component: Table, name: 'Table' },
             { path: '/form', component: Form, name: 'Form' },
             { path: '/user', component: user, name: '列表' },
@@ -70,6 +70,7 @@ let routes = [
         hidden: true,
         redirect: { path: '/404' }
     }
+    
 ];
 
 export default routes;

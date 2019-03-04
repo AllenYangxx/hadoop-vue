@@ -1,2 +1,0 @@
-# myVUE
-VUE test

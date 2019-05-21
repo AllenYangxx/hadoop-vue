@@ -16,8 +16,8 @@
 </template>
 
 <script>
-  import { requestLogin } from '../api/api';
   //import NProgress from 'nprogress'
+  import axios from 'axios';
   export default {
     data() {
       return {
@@ -52,20 +52,44 @@
             //NProgress.start();
             var url = this.HOME;
             var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
-            requestLogin(loginParams).then(data => {
-              this.logining = false;
-              //NProgress.done();
-              let { msg, code, date } = data;
-              if (code !== 200) {
+            
+            axios.get("/login", {
+              params:{
+                username: this.ruleForm2.account,
+                password: this.ruleForm2.checkPass
+              }
+            }).then((resp)=>{
+              let { code, message, data } = resp.data;
+              if(code==="1"){
+                sessionStorage.setItem('user', JSON.stringify(data));
+                this.$router.push({ path: '/user-history' });
+              }else {
                 this.$message({
+                  message: message,
+                  type: 'error'
+                });
+              }
+            }).catch(()=>{
+              this.$message({
                   message: msg,
                   type: 'error'
                 });
-              } else {
-                sessionStorage.setItem('user', JSON.stringify(date));
-                this.$router.push({ path: '/table' });
-              }
-            });
+            })
+            
+            // requestLogin(loginParams).then(data => {
+            //   this.logining = false;
+            //   //NProgress.done();
+            //   let { code, msg, date } = data;
+            //   if (code !== 200) {
+            //     this.$message({
+            //       message: msg,
+            //       type: 'error'
+            //     });
+            //   } else {
+            //     sessionStorage.setItem('user', JSON.stringify(date));
+            //     this.$router.push({ path: '/table' });
+            //   }
+            // });
           } else {
             console.log('error submit!!');
             return false;

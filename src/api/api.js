@@ -2,11 +2,25 @@ import axios from 'axios';
 
 let base = '';
 var qs = require('qs');
+export const requestLogin = params => { 
+    var url = base + '/login';
+    return axios.get(url, {
+        params:{
+            params
+        }
+    }
+    )
+    .then((response) =>{          //这里使用了ES6的语法
+        console.log(response)       //请求成功返回的数据
+    }).catch((error) =>{
+        alert(error)
+        console.log(error)       //请求失败返回的数据
+    }); 
+};
+
 // export const requestLogin = params => { 
-//     var url = base + '/api/login';
-//     return axios.post(url, qs.stringify(params)).then(res => res.data); 
+//     return axios.post(`${base}/login`,params).then(res=>res.data); 
 // };
-export const requestLogin = params => { return axios.post(`${base}/login`,params).then(res=>res.data); };
 
 export const getUserList = params => { return axios.get(`${base}/user/list`, { params: params }); };
 

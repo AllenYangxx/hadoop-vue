@@ -5,10 +5,12 @@ import Main from './views/Main.vue'
 import Table from './views/nav1/Table.vue'
 import Form from './views/nav1/Form.vue'
 import user from './views/nav1/user.vue'
-import Page4 from './views/nav2/Page4.vue'
-import Page5 from './views/nav2/Page5.vue'
 import Page6 from './views/nav3/Page6.vue'
 import echarts from './views/charts/echarts.vue'
+import userHistory from './views/nav1/user-history.vue'
+import userRecommend from './views/nav1/user-recommend.vue'
+import systemController from './views/nav2/sys-controller.vue'
+import systemTry from './views/nav2/sys-try.vue'
 
 let routes = [
     {
@@ -30,41 +32,39 @@ let routes = [
         name: '用户管理',
         iconCls: 'el-icon-message',//图标样式class
         children: [
-            { path: '/main', component: Main, name: '用户信息', hidden: true },
-            { path: '/table', component: Table, name: 'Table' },
-            { path: '/form', component: Form, name: 'Form' },
-            { path: '/user', component: user, name: '列表' },
+            { path: '/user-history', component: userHistory, name: '用户历史记录' },
+            { path: '/user-recommend', component: userRecommend, name: '用户推荐记录' },
         ]
     },
     {
         path: '/',
         component: Home,
-        name: '导航二',
+        name: '推荐系统',
         iconCls: 'fa fa-id-card-o',
         children: [
-            { path: '/page4', component: Page4, name: '页面4' },
-            { path: '/page5', component: Page5, name: '页面5' }
+            { path: '/sys-controller', component: systemController, name: '系统操作' },
+            { path: '/sys-try', component: systemTry, name: '用户体验' },
         ]
     },
-    {
-        path: '/',
-        component: Home,
-        name: '',
-        iconCls: 'fa fa-address-card',
-        leaf: true,//只有一个节点
-        children: [
-            { path: '/page6', component: Page6, name: '导航三' }
-        ]
-    },
-    {
-        path: '/',
-        component: Home,
-        name: 'Charts',
-        iconCls: 'fa fa-bar-chart',
-        children: [
-            { path: '/echarts', component: echarts, name: 'echarts' }
-        ]
-    },
+    // {
+    //     path: '/',
+    //     component: Home,
+    //     name: '',
+    //     iconCls: 'fa fa-address-card',
+    //     leaf: true,//只有一个节点
+    //     children: [
+    //         { path: '/page6', component: Page6, name: '导航三' }
+    //     ]
+    // },
+    // {
+    //     path: '/',
+    //     component: Home,
+    //     name: 'Charts',
+    //     iconCls: 'fa fa-bar-chart',
+    //     children: [
+    //         { path: '/echarts', component: echarts, name: 'echarts' }
+    //     ]
+    // },
     {
         path: '*',
         hidden: true,

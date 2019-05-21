@@ -12,11 +12,17 @@ import Vuex from 'vuex'
 import routes from './routes'
 import Mock from './mock'
 import axios from 'axios'
-Mock.bootstrap();
+// Mock.bootstrap();
 import 'font-awesome/css/font-awesome.min.css'
 
+
+
+axios.defaults.baseURL = "http://localhost:8081/";// 关键步骤–填写后台请求统一的地址
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 //将api方法定义到全局
 Vue.prototype.$axios = axios;
+
+
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)

@@ -23,19 +23,13 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8011,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     // 路由接口代理配置
     proxyTable: {
-      '/api': {
-        target: 'http://localhost:8081',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': '/api' 
-        }
-      }
+
     },
     
 
